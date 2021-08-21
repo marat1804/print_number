@@ -12,31 +12,40 @@
 
 #include "header.h"
 
-void	error_argc(int argc)
+void	error_argc(int argc, int type)
 {
-	if (argc == 1)
-		ft_putstr("Too few arguments\n");
-	else 
-		ft_putstr("Too many arguments\n");
+	if (type == 0)
+	{
+		if (argc == 1)
+			ft_putstr("Too few arguments\n");
+		else
+			ft_putstr("Too many arguments\n");
+	}
+	else if (type == 1)
+	{
+		ft_putstr("Error\n");
+	}
 }
 
 int	main(int argc, char **argv)
 {
 	if (argc == 2)
 	{
-		argv = NULL;
-		// чтение числа
+		if (!ft_valid_number(argv[1]))
+			error_argc(argc, 1);
+			
 		// загрузка словаря базового
 		// вывод числа
 	}
 	else if (argc == 3)
 	{
-		// чтение числа
+		if (!ft_valid_number(argv[2]))
+			error_argc(argc, 1);
 		// загрузка кастомного словаря
 		// вывод числа
 	}
 	else
 	{
-		error_argc(argc);
+		error_argc(argc, 0);
 	}
 }

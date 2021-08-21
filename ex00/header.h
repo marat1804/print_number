@@ -16,7 +16,19 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
+typedef struct s_dict
+{
+	char	*number;
+	char	*word;
+	t_dict	*next;
+}	t_dict;
+
+
 /*---------UTILS---------*/
 void	ft_putstr(char *str);
+
+/*------VALIDATORS-------*/
+int		ft_valid_number(char *s);
+
 
 #endif

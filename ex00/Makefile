@@ -1,5 +1,5 @@
 NAME = rush-02
-SOURCE = main.c utils.c
+SOURCE = main.c utils.c validators.c
 OBJECT = ${SOURCE:.c=.o}
 HEADER = header.h
 FLAGS = -Wall -Werror -Wextra
