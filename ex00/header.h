@@ -6,7 +6,7 @@
 /*   By: zlurleen <zlurleen@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 12:23:22 by strisha           #+#    #+#             */
-/*   Updated: 2021/08/21 19:23:53 by zlurleen         ###   ########.fr       */
+/*   Updated: 2021/08/21 20:48:23 by zlurleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	**ft_split(char *str, char *charset);
 
 /*------VALIDATORS-------*/
 int		ft_valid_number(char *s);
+int		get_nbr_list(char *nbr);
 
 /*------PRINT_NUMBER------*/
 int		ft_strlen(char *s);
