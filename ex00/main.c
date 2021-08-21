@@ -29,13 +29,15 @@ void	error_argc(int argc, int type)
 
 int	main(int argc, char **argv)
 {
+	t_dict		**dict;
+	t_string	*res;
+	int			flag;
+
 	if (argc == 2)
 	{
 		if (!ft_valid_number(argv[1]))
 			error_argc(argc, 1);
-			
-		// загрузка словаря базового
-		// вывод числа
+		flag = ft_print_nbr(dict, argv[1], &res);		
 	}
 	else if (argc == 3)
 	{
