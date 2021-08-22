@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_nbr_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: strisha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zlurleen <zlurleen@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 20:14:27 by strisha           #+#    #+#             */
-/*   Updated: 2021/08/21 20:14:28 by strisha          ###   ########.fr       */
+/*   Updated: 2021/08/22 15:40:48 by zlurleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,16 @@ int	validate_big_number(char *nbr, int size)
 {
 	int	i;
 
-	i = 1;
-	if (nbr[0] == '1')
-	{
-		while (nbr[i] == '0')
-			i++;
-		if (i == size)
-			return (3);
+	i = 0;
+	if (nbr[0] != '1')
 		return (5);
-	}
-	else
-	{
+	while (nbr[i + 1] == '0')
+		i++;
+	if (i + 1 != size)
 		return (5);
-	}
+	if (i == 0 || (i != 2 && i % 3))
+		return (5);
+	return (3);
 }
 
 int	get_nbr_list(char *nbr)
