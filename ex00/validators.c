@@ -25,3 +25,65 @@ int	ft_valid_number(char *s)
 	}
 	return (1);
 }
+
+int	get_filelen(char *filename)
+{
+	int		fd;
+	int		len;
+	int		r;
+	char	c[4096];
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	len = 0;
+	while (1)
+	{
+		r = read(fd, c, 4096);
+		len += r;
+		if (r < 4096)
+			break ;
+	}
+	close(fd);
+	return (len);
+}
+
+char	**get_lines(char *filename, int *error)
+{
+	int		fd;
+	int		len;
+	char	*buf;
+	char	**lines;
+
+	len = get_filelen(filename);
+	if (len == -1)
+	{
+		*error = -1;
+		return (NULL);
+	}
+	fd = open(filename, O_RDONLY);
+	buf = (char *) malloc(sizeof(char) * (len + 1));
+	read(fd, buf, len);
+	buf[len] = '\0';
+	close(fd);
+	lines = ft_split(buf, "\n");
+	free(buf);
+	return (lines);
+}
+
+int	replace_first_colon(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ':')
+		{
+			str[i] = '\n';
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}

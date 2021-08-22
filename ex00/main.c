@@ -27,10 +27,11 @@ void	error_argc(int argc, int type)
 	}
 }
 
-void print_dict(t_dict **dict)
+void	print_dict(t_dict **dict)
 {
-	int i;
+	int		i;
 	t_dict	*cur;
+
 	i = 0;
 	while (i < 4)
 	{
@@ -59,6 +60,36 @@ void	print_res(t_string	*res)
 	ft_putstr("\n");
 }
 
+int	one_arg_main(char **argv)
+{
+	t_dict		**dict;
+	t_string	*res;
+	int			flag;
+
+	if (!ft_valid_number(argv[1]))
+		return (-1);
+	dict = dict_parse("numbers.dict", &flag);
+	print_dict(dict);
+	flag = ft_print_nbr(dict, argv[1], &res);
+	printf("FLAG - %d\n", flag);
+	print_res(res);
+}
+
+int	two_arg_main(char **argv)
+{
+	t_dict		**dict;
+	t_string	*res;
+	int			flag;
+
+	if (!ft_valid_number(argv[2]))
+		return (-1);
+	dict = dict_parse(argv[1], &flag);
+	print_dict(dict);
+	flag = ft_print_nbr(dict, argv[2], &res);
+	printf("FLAG - %d\n", flag);
+	print_res(res);
+}
+
 int	main(int argc, char **argv)
 {
 	t_dict		**dict;
@@ -69,23 +100,14 @@ int	main(int argc, char **argv)
 	res = NULL;
 	if (argc == 2)
 	{
-		if (!ft_valid_number(argv[1]))
-			error_argc(argc, 1);
-		dict = dict_parse("numbers.dict", &flag);
-		print_dict(dict);
-		flag = ft_print_nbr(dict, argv[1], &res);
-		printf("FLAG - %d\n", flag);
-		print_res(res);
+		flag = one_arg_main(argv);
+		//TODO CHECK FLAG
 	}
 	else if (argc == 3)
 	{
-		if (!ft_valid_number(argv[2]))
-			error_argc(argc, 1);
-		// загрузка кастомного словаря
-		// вывод числа
+		flag = two_arg_main(argv);
+		//TODO CHECK FLAG
 	}
 	else
-	{
 		error_argc(argc, 0);
-	}
 }
