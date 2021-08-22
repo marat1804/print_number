@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: strisha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zlurleen <zlurleen@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 12:23:22 by strisha           #+#    #+#             */
-/*   Updated: 2021/08/21 12:23:24 by strisha          ###   ########.fr       */
+/*   Updated: 2021/08/21 20:48:23 by zlurleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-typedef struct s_dict
+typedef struct 		s_dict
 {
-	char	*number;
-	char	*word;
+	char			*number;
+	char			*word;
 	struct s_dict	*next;
 }	t_dict;
 
@@ -30,13 +30,14 @@ typedef struct s_string
 	
 }	t_string;
 
-
 /*---------UTILS---------*/
 void	ft_putstr(char *str);
 int		ft_print_nbr(t_dict **dict, char *nbr, t_string **res);
+char	**ft_split(char *str, char *charset);
 
 /*------VALIDATORS-------*/
 int		ft_valid_number(char *s);
+int		get_nbr_list(char *nbr);
 
 /*------PRINT_NUMBER------*/
 int		ft_strlen(char *s);
