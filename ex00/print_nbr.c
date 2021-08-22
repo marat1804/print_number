@@ -11,28 +11,30 @@
 /* ************************************************************************** */
 
 #include "header.h"
-#include <stdio.h>
+
 int	ft_print_nbr(t_dict **dict, char *nbr, t_string **res)
 {
 	int			i;
 	int			len;
-	int			rem;
 	int			s;
 
-	i = ft_strlen(nbr);
-	len = --i;
-	while (i >= 0)
+	len = ft_strlen(nbr) - 1;
+	i = 0;
+	while (i <= len)
 	{
-		rem = (len - i) % 3;
-		if (rem == 0)
-			s = dict_rem_0(dict, nbr[len - i], res, i);
-		else if (rem == 2)
-			s = dict_rem_2(dict, nbr[len - i], res);
+		if (((len - i) % 3) == 0)
+			s = dict_rem_0(dict, nbr[i], res, (len - i));
+		else if (((len - i) % 3) == 2)
+			s = dict_rem_2(dict, nbr[i], res);
 		else
-			s = dict_rem_1(dict, nbr[len - i], nbr[len - i + 1], res);
+		{
+			s = dict_rem_1(dict, nbr[i], nbr[i + 1], res);
+			if (nbr[i] == '1')
+				nbr[i + 1] = '0';
+		}
 		if (s == -1)
 			return (-1);		//TODO FREE memory
-		i--;
+		i++;
 	}
 	return (0);
 }

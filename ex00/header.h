@@ -15,8 +15,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-
-typedef struct 		s_dict
+#include <stdio.h>
+typedef struct s_dict
 {
 	char			*number;
 	char			*word;
@@ -27,13 +27,15 @@ typedef struct s_string
 {
 	char			*data;
 	struct s_string	*next;
-	
 }	t_string;
 
 /*---------UTILS---------*/
 void	ft_putstr(char *str);
 int		ft_print_nbr(t_dict **dict, char *nbr, t_string **res);
 char	**ft_split(char *str, char *charset);
+int		word_count_in_matrix(char **words);
+void	free_matrix(char **words);
+char	*ft_strjoin(int size, char **strs, char *sep);
 
 /*------VALIDATORS-------*/
 int		ft_valid_number(char *s);
@@ -51,4 +53,5 @@ int		dict_rem_0(t_dict **dict, char c, t_string **res, int i);
 int		dict_rem_2(t_dict **dict, char c, t_string **res);
 int		dict_rem_1(t_dict **dict, char c, char d, t_string **res);
 t_dict	**dict_parse(char *filename, int *error);
+t_dict	**dict_init(void);
 #endif

@@ -39,7 +39,7 @@ char	*ft_num_to_str(char c, int i)
 {
 	char	*s;
 	int		j;
-	
+
 	s = (char *)malloc(sizeof(char) * (i + 2));
 	j = 0;
 	s[j++] = c;

@@ -27,6 +27,38 @@ void	error_argc(int argc, int type)
 	}
 }
 
+void print_dict(t_dict **dict)
+{
+	int i;
+	t_dict	*cur;
+	i = 0;
+	while (i < 4)
+	{
+		cur = dict[i];
+		while (cur)
+		{
+			printf("%d - %s - %s\n", i, cur->number, cur->word);
+			cur = cur->next;
+		}
+		i++;
+	}
+}
+
+void	print_res(t_string	*res)
+{
+	t_string	*tmp;
+
+	tmp = res;
+	while (tmp)
+	{
+		ft_putstr(tmp->data);
+		tmp = tmp->next;
+		if (tmp != NULL)
+			ft_putstr(" ");
+	}
+	ft_putstr("\n");
+}
+
 int	main(int argc, char **argv)
 {
 	t_dict		**dict;
@@ -40,8 +72,10 @@ int	main(int argc, char **argv)
 		if (!ft_valid_number(argv[1]))
 			error_argc(argc, 1);
 		dict = dict_parse("numbers.dict", &flag);
-		//flag = ft_print_nbr(dict, argv[1], &res);
-		
+		print_dict(dict);
+		flag = ft_print_nbr(dict, argv[1], &res);
+		printf("FLAG - %d\n", flag);
+		print_res(res);
 	}
 	else if (argc == 3)
 	{
