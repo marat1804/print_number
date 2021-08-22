@@ -34,13 +34,16 @@ void	ft_putstr(char *str);
 int		ft_print_nbr(t_dict **dict, char *nbr, t_string **res);
 char	**ft_split(char *str, char *charset);
 int		word_count_in_matrix(char **words);
-void	free_matrix(char **words);
 char	*ft_strjoin(int size, char **strs, char *sep);
 int		get_filelen(char *filename);
 char	**get_lines(char *filename, int *error);
 int		replace_first_colon(char *str);
+
+/*--------MEMORY-------*/
 void	free_dict(t_dict **dict);
 void	free_res(t_string *str);
+int		free_word_num(char *word, char *num, int flag_num, int flag_word);
+void	free_matrix(char **words);
 
 /*------VALIDATORS-------*/
 int		ft_valid_number(char *s);
@@ -62,4 +65,5 @@ t_dict	**dict_parse(char *filename);
 t_dict	**dict_init(void);
 t_dict	*dict_create_elem(char *num, char *word);
 void	dict_push_elem(t_dict **dict, int pos, char *num, char *word);
+
 #endif

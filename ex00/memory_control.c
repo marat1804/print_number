@@ -27,8 +27,10 @@ void	free_dict(t_dict **dict)
 	int		i;
 	t_dict	*tmp;
 	t_dict	*cur;
+	int		flag;
 
 	i = 0;
+	flag = 0;
 	while (i < 4)
 	{
 		tmp = dict[i];
@@ -56,4 +58,18 @@ void	free_res(t_string *str)
 		free(str);
 		str = cur;
 	}
+}
+
+int	free_word_num(char *word, char *num, int flag_num, int flag_word)
+{
+	if (flag_num == 0 && flag_word == 1)
+		free(word);
+	else if (flag_num == 1 & flag_word == 1)
+	{
+		free(word);
+		free(num);
+	}
+	else if (flag_num == 1 && flag_word == 0)
+		free(num);
+	return (0);
 }
