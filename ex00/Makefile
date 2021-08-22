@@ -1,5 +1,5 @@
 NAME = rush-02
-SOURCE = main.c utils.c validators.c dict_queries.c ft_split.c ft_strjoin.c list_utils.c print_nbr.c 
+SOURCE = dict_parse.c dict_queries.c ft_split.c ft_strjoin.c get_nbr_list.c list_utils.c main.c print_nbr.c utils.c validators.c
 OBJECT = ${SOURCE:.c=.o}
 HEADER = header.h
 FLAGS = -Wall -Werror -Wextra
