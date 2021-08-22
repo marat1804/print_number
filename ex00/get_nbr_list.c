@@ -6,7 +6,7 @@
 /*   By: zlurleen <zlurleen@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 20:14:27 by strisha           #+#    #+#             */
-/*   Updated: 2021/08/22 15:40:48 by zlurleen         ###   ########.fr       */
+/*   Updated: 2021/08/22 16:42:00 by zlurleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	validate_big_number(char *nbr, int size)
 
 	i = 0;
 	if (nbr[0] != '1')
-		return (5);
+		return (4);
 	while (nbr[i + 1] == '0')
 		i++;
 	if (i + 1 != size)
-		return (5);
+		return (4);
 	if (i == 0 || (i != 2 && i % 3))
-		return (5);
+		return (4);
 	return (3);
 }
 
@@ -48,7 +48,7 @@ int	get_nbr_list(char *nbr)
 			return (1);
 		else if (nbr[1] == '0')
 			return (2);
-		return (5);
+		return (4);
 	}
 	return (validate_big_number(nbr, size));
 }
