@@ -24,7 +24,9 @@ int	parse_num(char *str, char **num)
 		free_matrix(words);
 		return (0);
 	}
-	tmp = words[0];
+	tmp = validate_plus(words[0]);
+	if (tmp != words[0])
+		words[0] = tmp;
 	i = 0;
 	while (tmp[i] >= '0' && tmp[i] <= '9')
 		i++;

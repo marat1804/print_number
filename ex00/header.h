@@ -16,7 +16,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # define DICT_SIZE 5
-
 typedef struct s_dict
 {
 	char			*number;
@@ -41,6 +40,7 @@ char	**get_lines(char *filename, int *error);
 int		replace_first_colon(char *str);
 char	*trim_leading_zeros(char *str, int do_copy);
 char	*init_str(char *nbr, int i);
+char	*validate_plus(char *str);
 
 /*--------MEMORY-------*/
 void	free_dict(t_dict **dict);

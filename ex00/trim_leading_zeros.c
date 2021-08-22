@@ -47,3 +47,24 @@ char	*trim_leading_zeros(char *str, int do_copy)
 	}
 	return (str + i);
 }
+
+char	*validate_plus(char *str)
+{
+	int		i;
+	char	*res;
+
+	i = 0;
+	while (str[i] == '\t')
+		i++;
+	if (str[i] == '+')
+	{
+		i++;
+	}
+	if (i != 0)
+	{
+		res = ft_strdup(str + i);
+		free(str);
+		return (res);
+	}
+	return (str);
+}
