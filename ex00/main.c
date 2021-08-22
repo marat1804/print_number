@@ -109,6 +109,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		error_argc(argc, 0);
-	getchar();
 	return (0);
 }
