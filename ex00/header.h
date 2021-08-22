@@ -39,10 +39,13 @@ char	*ft_strjoin(int size, char **strs, char *sep);
 int		get_filelen(char *filename);
 char	**get_lines(char *filename, int *error);
 int		replace_first_colon(char *str);
+void	free_dict(t_dict **dict);
+void	free_res(t_string *str);
 
 /*------VALIDATORS-------*/
 int		ft_valid_number(char *s);
 int		get_nbr_list(char *nbr);
+int		all_space(char *str);
 
 /*------PRINT_NUMBER------*/
 int		ft_strlen(char *s);
@@ -55,7 +58,7 @@ char	*ft_num_to_str(char c, int i);
 int		dict_rem_0(t_dict **dict, char c, t_string **res, int i);
 int		dict_rem_2(t_dict **dict, char c, t_string **res);
 int		dict_rem_1(t_dict **dict, char c, char d, t_string **res);
-t_dict	**dict_parse(char *filename, int *error);
+t_dict	**dict_parse(char *filename);
 t_dict	**dict_init(void);
 t_dict	*dict_create_elem(char *num, char *word);
 void	dict_push_elem(t_dict **dict, int pos, char *num, char *word);

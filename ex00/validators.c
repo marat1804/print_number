@@ -40,6 +40,8 @@ int	get_filelen(char *filename)
 	while (1)
 	{
 		r = read(fd, c, 4096);
+		if (r == -1)
+			return (-1);
 		len += r;
 		if (r < 4096)
 			break ;
@@ -85,5 +87,17 @@ int	replace_first_colon(char *str)
 		}
 		i++;
 	}
+	return (0);
+}
+
+int	all_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ')
+		i++;
+	if (str[i] == '\0')
+		return (1);
 	return (0);
 }

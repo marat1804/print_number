@@ -22,9 +22,9 @@ void	error_argc(int argc, int type)
 			ft_putstr("Too many arguments\n");
 	}
 	else if (type == 1)
-	{
 		ft_putstr("Error\n");
-	}
+	else if (type == 2)
+		ft_putstr("Dict Error\n");
 }
 
 void	print_dict(t_dict **dict)
@@ -68,11 +68,16 @@ int	one_arg_main(char **argv)
 
 	if (!ft_valid_number(argv[1]))
 		return (-1);
-	dict = dict_parse("numbers.dict", &flag);
+	dict = dict_parse("numbers.dict");
+	if (dict == NULL)
+		return (-2);	
 	print_dict(dict);
 	flag = ft_print_nbr(dict, argv[1], &res);
 	printf("FLAG - %d\n", flag);
 	print_res(res);
+	free_dict(dict);
+	free_res(res);
+	return (0);
 }
 
 int	two_arg_main(char **argv)
@@ -83,11 +88,16 @@ int	two_arg_main(char **argv)
 
 	if (!ft_valid_number(argv[2]))
 		return (-1);
-	dict = dict_parse(argv[1], &flag);
-	print_dict(dict);
+	dict = dict_parse(argv[1]);
+	if (dict == NULL)
+		return (-2);
+	//print_dict(dict);
 	flag = ft_print_nbr(dict, argv[2], &res);
 	printf("FLAG - %d\n", flag);
 	print_res(res);
+	free_dict(dict);
+	free_res(res);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -98,16 +108,19 @@ int	main(int argc, char **argv)
 
 	dict = NULL;
 	res = NULL;
-	if (argc == 2)
+	if (argc == 2 || argc == 3)
 	{
-		flag = one_arg_main(argv);
-		//TODO CHECK FLAG
-	}
-	else if (argc == 3)
-	{
-		flag = two_arg_main(argv);
-		//TODO CHECK FLAG
+		if (argc == 2)
+			flag = one_arg_main(argv);
+		else
+			flag = two_arg_main(argv);
+		if (flag == -1)
+			error_argc(argc, 1);
+		else if (flag == -2)
+			error_argc(argc, 2);
 	}
 	else
 		error_argc(argc, 0);
+	getchar();
+	return (0);
 }

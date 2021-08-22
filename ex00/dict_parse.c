@@ -58,6 +58,8 @@ int	parse_one_line(t_dict **dict, char *str)
 	char	*num;
 	char	*word;
 
+	if (all_space(str))
+		return (2);
 	if (!replace_first_colon(str))
 		return (0);
 	lines = ft_split(str, "\n");
@@ -70,31 +72,38 @@ int	parse_one_line(t_dict **dict, char *str)
 	{
 		dict_push_elem(dict, flag, num, word);
 	}
+	free_matrix(lines);
 	return (1);
 }
 
 t_dict	**parse_lines(char **lines)
 {
 	t_dict	**dict;
+	int		flag;
 
 	dict = dict_init();
 	while (*lines != NULL)
 	{
-		if (!parse_one_line(dict, *lines))
-			break ; // TODO CLEAN MEMORY
+		flag = parse_one_line(dict, *lines);
+		if (flag == 0)
+			break ;			
+			// TODO CLEAN MEMORY IN ERROR
 		lines++;
 	}
 	return (dict);
 }
 
-t_dict	**dict_parse(char *filename, int *error)
+t_dict	**dict_parse(char *filename)
 {
 	t_dict	**dict;
 	char	**lines;
+	int		error;
 
-	lines = get_lines(filename, error);
-	if (*error)
+	error = 0;
+	lines = get_lines(filename, &error);
+	if (error)
 		return (NULL);
 	dict = parse_lines(lines);
+	free_matrix(lines);
 	return (dict);
 }

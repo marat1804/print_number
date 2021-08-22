@@ -82,13 +82,3 @@ int	word_count_in_matrix(char **words)
 		i++;
 	return (i);
 }
-
-void	free_matrix(char **words)
-{
-	int	i;
-
-	i = 0;
-	while (words[i] != NULL)
-		free(words[i++]);
-	free(words);
-}
