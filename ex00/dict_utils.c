@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dict_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: strisha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zlurleen <zlurleen@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 12:51:32 by strisha           #+#    #+#             */
-/*   Updated: 2021/08/22 12:51:33 by strisha          ###   ########.fr       */
+/*   Updated: 2021/08/22 14:49:17 by zlurleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@ t_dict	*dict_create_elem(char *num, char *word)
 	tmp->number = num;
 	tmp->word = word;
 	return (tmp);
+}
+
+int		dict_find_elem(t_dict **dict, int pos, char *num)
+{
+	int		i;
+	t_dict	*cur;
+
+	i = 0;
+	cur = dict[pos];
+	while (cur != NULL)
+	{
+		if (ft_strcmp(num, cur->number))
+			return (i);
+		cur = cur->next;
+		++i;
+	}
+	return (-1);
 }
 
 void	dict_push_elem(t_dict **dict, int pos, char *num, char *word)

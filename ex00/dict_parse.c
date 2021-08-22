@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dict_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: strisha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zlurleen <zlurleen@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 10:50:46 by strisha           #+#    #+#             */
-/*   Updated: 2021/08/22 10:50:48 by strisha          ###   ########.fr       */
+/*   Updated: 2021/08/22 14:54:04 by zlurleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	parse_one_line(t_dict **dict, char *str)
 	flag = get_nbr_list(num);
 	if (flag < 5)
 	{
+		if (dict_find_elem(dict, flag, num, word) != -1)
+			return (0);
 		dict_push_elem(dict, flag, num, word);
 	}
 	free_matrix(lines);
