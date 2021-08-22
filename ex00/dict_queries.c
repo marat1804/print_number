@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dict_queries.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: strisha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: zlurleen <zlurleen@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 16:57:25 by strisha           #+#    #+#             */
-/*   Updated: 2021/08/21 16:57:27 by strisha          ###   ########.fr       */
+/*   Updated: 2021/08/22 16:41:14 by zlurleen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,13 @@ int	dict_rem_1(t_dict **dict, char c, char d, t_string **res)
 t_dict	**dict_init(void)
 {
 	t_dict	**dict;
+	int		n;
 	int		i;
 
-	dict = (t_dict **) malloc(sizeof(t_dict *) * 4);
+	n = 5;
+	dict = (t_dict **) malloc(sizeof(t_dict *) * n);
 	i = 0;
-	while (i < 4)
+	while (i < n)
 	{
 		dict[i] = NULL;
 		++i;
