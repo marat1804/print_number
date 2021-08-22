@@ -49,6 +49,8 @@ int	one_arg_main(char **argv)
 	int			flag;
 	char		*num;
 
+	dict = NULL;
+	res = NULL;
 	if (!ft_valid_number(argv[1]))
 		return (-1);
 	num = trim_leading_zeros(argv[1], 0);
@@ -72,6 +74,8 @@ int	two_arg_main(char **argv)
 	int			flag;
 	char		*num;
 
+	dict = NULL;
+	res = NULL;
 	if (!ft_valid_number(argv[2]))
 		return (-1);
 	num = trim_leading_zeros(argv[2], 0);
@@ -90,12 +94,8 @@ int	two_arg_main(char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_dict		**dict;
-	t_string	*res;
 	int			flag;
 
-	dict = NULL;
-	res = NULL;
 	if (argc == 2 || argc == 3)
 	{
 		if (argc == 2)
