@@ -48,6 +48,6 @@ t_dict	**dict_parse(char *filename, int *error)
 	r = 1;
 	while (r)
 	{
-		//r = read(fd, buf, BUF_SIZE);
+		r = read(fd, buf, BUF_SIZE);
 	}
 }

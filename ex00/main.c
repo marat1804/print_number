@@ -33,11 +33,15 @@ int	main(int argc, char **argv)
 	t_string	*res;
 	int			flag;
 
+	dict = NULL;
+	res = NULL;
 	if (argc == 2)
 	{
 		if (!ft_valid_number(argv[1]))
 			error_argc(argc, 1);
-		flag = ft_print_nbr(dict, argv[1], &res);		
+		dict = dict_parse("numbers.dict", &flag);
+		//flag = ft_print_nbr(dict, argv[1], &res);
+		
 	}
 	else if (argc == 3)
 	{

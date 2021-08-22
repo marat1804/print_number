@@ -49,4 +49,5 @@ char	*ft_num_to_str(char c, int i);
 int		dict_rem_0(t_dict **dict, char c, t_string **res, int i);
 int		dict_rem_2(t_dict **dict, char c, t_string **res);
 int		dict_rem_1(t_dict **dict, char c, char d, t_string **res);
+t_dict	**dict_parse(char *filename, int *error);
 #endif

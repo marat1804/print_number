@@ -31,7 +31,8 @@ int	ft_print_nbr(t_dict **dict, char *nbr, t_string **res)
 		else
 			s = dict_rem_1(dict, nbr[len - i], nbr[len - i + 1], res);
 		if (s == -1)
-			 ;		//TODO FREE memory
+			return (-1);		//TODO FREE memory
 		i--;
 	}
+	return (0);
 }
