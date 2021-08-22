@@ -30,9 +30,11 @@ int		dict_find_elem(t_dict **dict, int pos, char *num)
 
 	i = 0;
 	cur = dict[pos];
+	if (dict[pos] == NULL)
+		return (-1);
 	while (cur != NULL)
 	{
-		if (ft_strcmp(num, cur->number))
+		if (ft_strcmp(num, cur->number) == 0)
 			return (i);
 		cur = cur->next;
 		++i;

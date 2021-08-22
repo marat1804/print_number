@@ -16,7 +16,6 @@
 15: fifteen
          
 16: sixteen
-
 17 : seventeen
 18: eighteen
 19: nineteen
@@ -29,6 +28,7 @@
 80: eighty
 90: ninety
 100: hundred
+10000: ted
 1000: thousand
 1000000: million
 1000000000: billion

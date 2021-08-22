@@ -51,14 +51,14 @@ int	dict_rem_0(t_dict **dict, char c, t_string **res, int i)
 	return (0);
 }
 
-int	dict_rem_2(t_dict **dict, char c, t_string **res)
+int	dict_rem_2(t_dict **dict, char *nbr, t_string **res, int i)
 {
 	char	*elem;
 	char	*str;
 
-	if (c == '0')
+	if (nbr[i] == '0')
 		return (0);
-	str = ft_num_to_str(c, 0);
+	str = ft_num_to_str(nbr[i], 0);
 	elem = find_string(dict[0], str);
 	free(str);
 	if (elem == NULL)
@@ -90,7 +90,7 @@ int	dict_rem_1(t_dict **dict, char c, char d, t_string **res)
 			return (-1);
 		ft_list_push_back(res, elem);
 	}
-	else
+	else if (c != '0')
 	{
 		str = ft_num_to_str(c, 1);
 		elem = find_string(dict[2], str);
@@ -105,13 +105,11 @@ int	dict_rem_1(t_dict **dict, char c, char d, t_string **res)
 t_dict	**dict_init(void)
 {
 	t_dict	**dict;
-	int		n;
 	int		i;
 
-	n = 5;
-	dict = (t_dict **) malloc(sizeof(t_dict *) * n);
+	dict = (t_dict **) malloc(sizeof(t_dict *) * DICT_SIZE);
 	i = 0;
-	while (i < n)
+	while (i < DICT_SIZE)
 	{
 		dict[i] = NULL;
 		++i;

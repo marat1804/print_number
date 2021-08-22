@@ -28,12 +28,11 @@ int	parse_num(char *str, char **num)
 	i = 0;
 	while (tmp[i] >= '0' && tmp[i] <= '9')
 		i++;
-	//if (tmp[i] != '\0' && i != 0)			//TODO CHECK
-		//*num = tmp;
 	if (i == 0)
 		tmp[i++] = '0';
 	tmp[i] = '\0';
-	*num = ft_strdup(tmp);		// clean zeros
+	*num = ft_strdup(tmp);
+	*num = trim_leading_zeros(*num, 1);
 	free_matrix(words);
 	return (1);
 }
@@ -72,9 +71,10 @@ int	parse_one_line(t_dict **dict, char *str)
 	if (flag_num && flag_word)
 	{
 		flag_num = get_nbr_list(num);
-		if (dict_find_elem(dict, flag_num, num, word) != -1)
+		if (dict_find_elem(dict, flag_num, num) != -1)
 			return (0);
 		dict_push_elem(dict, flag_num, num, word);
+		return (1);
 	}
 	return (free_word_num(word, num, flag_num, flag_word));
 }
@@ -88,7 +88,6 @@ t_dict	**parse_lines(char **lines)
 	while (*lines != NULL)
 	{
 		flag = parse_one_line(dict, *lines);
-		
 		if (flag == 0)
 		{
 			free_dict(dict);

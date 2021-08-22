@@ -27,24 +27,6 @@ void	error_argc(int argc, int type)
 		ft_putstr("Dict Error\n");
 }
 
-void	print_dict(t_dict **dict)
-{
-	int		i;
-	t_dict	*cur;
-
-	i = 0;
-	while (i < 4)
-	{
-		cur = dict[i];
-		while (cur)
-		{
-			printf("%d - %s - %s\n", i, cur->number, cur->word);
-			cur = cur->next;
-		}
-		i++;
-	}
-}
-
 void	print_res(t_string	*res)
 {
 	t_string	*tmp;
@@ -65,16 +47,20 @@ int	one_arg_main(char **argv)
 	t_dict		**dict;
 	t_string	*res;
 	int			flag;
+	char		*num;
 
 	if (!ft_valid_number(argv[1]))
 		return (-1);
+	num = trim_leading_zeros(argv[1], 0);
+	printf("NUM - %s\n", num);
 	dict = dict_parse("numbers.dict");
 	if (dict == NULL)
 		return (-2);	
-	print_dict(dict);
-	flag = ft_print_nbr(dict, argv[1], &res);
-	printf("FLAG - %d\n", flag);
-	print_res(res);
+	flag = ft_print_nbr(dict, num, &res);
+	if (flag == -1)
+		error_argc(1, 2);
+	else
+		print_res(res);
 	free_dict(dict);
 	free_res(res);
 	return (0);
@@ -85,16 +71,19 @@ int	two_arg_main(char **argv)
 	t_dict		**dict;
 	t_string	*res;
 	int			flag;
+	char		*num;
 
 	if (!ft_valid_number(argv[2]))
 		return (-1);
+	num = trim_leading_zeros(argv[2], 0);
 	dict = dict_parse(argv[1]);
 	if (dict == NULL)
 		return (-2);
-	//print_dict(dict);
-	flag = ft_print_nbr(dict, argv[2], &res);
-	printf("FLAG - %d\n", flag);
-	print_res(res);
+	flag = ft_print_nbr(dict, num, &res);
+	if (flag == -1)
+		error_argc(1, 2);
+	else
+		print_res(res);
 	free_dict(dict);
 	free_res(res);
 	return (0);

@@ -31,7 +31,7 @@ void	free_dict(t_dict **dict)
 
 	i = 0;
 	flag = 0;
-	while (i < 4)
+	while (i < DICT_SIZE)
 	{
 		tmp = dict[i];
 		while (tmp)
