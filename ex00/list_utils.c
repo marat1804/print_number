@@ -48,3 +48,14 @@ char	*ft_num_to_str(char c, int i)
 	s[j] = '\0';
 	return (s);
 }
+
+char	*init_str(char *nbr, int i)
+{
+	char	*str;
+
+	str = (char *)malloc(sizeof(char) * 3);
+	str[0] = nbr[i];
+	str[1] = nbr[i + 1];
+	str[2] = '\0';
+	return (str);
+}

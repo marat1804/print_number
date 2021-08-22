@@ -73,26 +73,24 @@ int	dict_rem_2(t_dict **dict, char *nbr, t_string **res, int i)
 	return (0);
 }
 
-int	dict_rem_1(t_dict **dict, char c, char d, t_string **res)
+int	dict_rem_1(t_dict **dict, char *nbr, int i, t_string **res)
 {
 	char	*elem;
 	char	*str;
 
-	if (c == '1')
+	if (nbr[i] == '1')
 	{
-		str = (char *)malloc(sizeof(char) * 3);
-		str[0] = c;
-		str[1] = d;
-		str[2] = '\0';
+		str = init_str(nbr, i);
 		elem = find_string(dict[1], str);
 		free(str);
+		nbr[i + 1] = '0';
 		if (elem == NULL)
 			return (-1);
 		ft_list_push_back(res, elem);
 	}
-	else if (c != '0')
+	else if (nbr[i] != '0')
 	{
-		str = ft_num_to_str(c, 1);
+		str = ft_num_to_str(nbr[i], 1);
 		elem = find_string(dict[2], str);
 		free(str);
 		if (elem == NULL)

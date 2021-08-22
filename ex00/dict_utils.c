@@ -23,7 +23,7 @@ t_dict	*dict_create_elem(char *num, char *word)
 	return (tmp);
 }
 
-int		dict_find_elem(t_dict **dict, int pos, char *num)
+int	dict_find_elem(t_dict **dict, int pos, char *num)
 {
 	int		i;
 	t_dict	*cur;

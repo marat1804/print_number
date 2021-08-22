@@ -52,10 +52,9 @@ int	one_arg_main(char **argv)
 	if (!ft_valid_number(argv[1]))
 		return (-1);
 	num = trim_leading_zeros(argv[1], 0);
-	printf("NUM - %s\n", num);
 	dict = dict_parse("numbers.dict");
 	if (dict == NULL)
-		return (-2);	
+		return (-2);
 	flag = ft_print_nbr(dict, num, &res);
 	if (flag == -1)
 		error_argc(1, 2);

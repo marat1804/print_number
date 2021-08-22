@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # define DICT_SIZE 5
 
-#include <stdio.h>
 typedef struct s_dict
 {
 	char			*number;
@@ -41,6 +40,7 @@ int		get_filelen(char *filename);
 char	**get_lines(char *filename, int *error);
 int		replace_first_colon(char *str);
 char	*trim_leading_zeros(char *str, int do_copy);
+char	*init_str(char *nbr, int i);
 
 /*--------MEMORY-------*/
 void	free_dict(t_dict **dict);
@@ -63,7 +63,7 @@ char	*ft_num_to_str(char c, int i);
 /*------DICT_QUERIES------*/
 int		dict_rem_0(t_dict **dict, char c, t_string **res, int i);
 int		dict_rem_2(t_dict **dict, char *nbr, t_string **res, int i);
-int		dict_rem_1(t_dict **dict, char c, char d, t_string **res);
+int		dict_rem_1(t_dict **dict, char *nbr, int i, t_string **res);
 t_dict	**dict_parse(char *filename);
 t_dict	**dict_init(void);
 t_dict	*dict_create_elem(char *num, char *word);

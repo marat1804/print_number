@@ -34,7 +34,7 @@ char	*trim_leading_zeros(char *str, int do_copy)
 			free(str);
 			return (ft_strdup("0"));
 		}
-		return "0"; 
+		return ("0");
 	}
 	if (i != 0)
 	{
@@ -44,7 +44,6 @@ char	*trim_leading_zeros(char *str, int do_copy)
 			free(str);
 			return (res);
 		}
-		return (str + i);
 	}
-	return (str);
+	return (str + i);
 }
